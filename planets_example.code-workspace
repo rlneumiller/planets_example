@@ -1,0 +1,95 @@
+{
+  "folders": [
+    {
+      "path": ".",
+      "name": "planets_example"
+    }
+  ],
+  "settings": {
+    "[rust]": {
+      "editor.semanticHighlighting.enabled": false
+    },
+    "editor.inlayHints.enabled": "offUnlessPressed",
+    "editor.semanticHighlighting.enabled": false,
+    "git.autoRepositoryDetection": false,
+    "git.detectSubmodules": false,
+    "git.detectSubmodulesLimit": 0,
+    "git.scanRepositories": [
+      "."
+    ],
+    "workbench.tree.indent": 30
+  },
+  "launch": {
+    "version": "0.2.0",
+    "configurations": [
+      {
+        "name": "planets_example (Bin)",
+        "type": "lldb",
+        "request": "launch",
+        "cwd": "${workspaceFolder:planets_example}",
+        "env": {
+          "BEVY_ASSET_ROOT": "${workspaceFolder:planets_example}"
+        },
+        "cargo": {
+          "args": [
+            "run",
+            "--bin",
+            "planets_example",
+            "--target-dir",
+            "${workspaceFolder:planets_example}/target",
+            "--manifest-path",
+            "${workspaceFolder:planets_example}/Cargo.toml"
+          ],
+          "cwd": "${workspaceFolder:planets_example}"
+        },
+        "args": []
+      }
+    ]
+  },
+  "tasks": {
+    "version": "2.0.0",
+    "tasks": [
+      {
+        "label": "Build Project",
+        "type": "shell",
+        "command": "cargo",
+        "args": [
+          "build"
+        ],
+        "cwd": "${workspaceFolder:planets_example}",
+        "group": {
+          "kind": "build",
+          "isDefault": true
+        },
+        "presentation": {
+          "echo": true,
+          "focus": false,
+          "panel": "shared",
+          "reveal": "always"
+        },
+        "problemMatcher": [
+          "$rustc"
+        ]
+      },
+      {
+        "label": "Run Project",
+        "type": "shell",
+        "command": "cargo",
+        "args": [
+          "run"
+        ],
+        "cwd": "${workspaceFolder:planets_example}",
+        "group": "build",
+        "presentation": {
+          "echo": true,
+          "focus": true,
+          "panel": "dedicated",
+          "reveal": "always"
+        },
+        "problemMatcher": [
+          "$rustc"
+        ]
+      }
+    ]
+  }
+}
